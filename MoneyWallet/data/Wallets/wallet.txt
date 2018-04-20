@@ -1,0 +1,1 @@
+["wallet",["activate","init"],["deposit",{"amount":"10","currency":"PLN"}],["deposit",{"amount":"20","currency":"PLN"}],["withdraw",{"amount":"3","currency":"PLN"}],["deactivate","banned"]]
