@@ -1,0 +1,14 @@
+BEGIN;
+  DROP TABLE IF EXISTS book;
+
+  CREATE TABLE book(
+    book_instance_id serial PRIMARY KEY,
+    account_id int,
+    date date,
+    date_to date,
+    borrowed boolean DEFAULT FALSE);
+
+-- create an example set of books:
+  INSERT INTO book DEFAULT VALUES;
+  INSERT INTO book DEFAULT VALUES;
+COMMIT;

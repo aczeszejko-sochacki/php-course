@@ -1,7 +1,5 @@
 <?php 
-
 namespace Tests\Tests\Unit;
-
 require __DIR__ . '/../../vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use Calculator\Expressions\Addition;
@@ -10,7 +8,6 @@ use Calculator\Expressions\Multiplication;
 use Calculator\Expressions\Division;
 use Struct\Stack;
 use Calculator\RPNCalculator;
-
 class RPNCalculatorTest extends TestCase
 {
 	/**
@@ -19,8 +16,6 @@ class RPNCalculatorTest extends TestCase
 	 * @param $summand2
 	 * @param $sum
 	 */
-
-
 	public function testAddition($summand1,
 		$summand2, $sum)
 	{
@@ -29,16 +24,12 @@ class RPNCalculatorTest extends TestCase
 		$stack->push($summand1);
 		$stack->push($summand2);
 		$add = new Addition($stack);
-
 		//Act
 		$addition_result = $add->calculateExp();
-
 		//Assert
 		$this->assertEquals($addition_result,
 			$sum);
-
 	}
-
 	public function getDataForAddition()
 	{
 		return [
@@ -49,15 +40,12 @@ class RPNCalculatorTest extends TestCase
 			[-11, 11, 0]
 		];
 	}
-
 	/**
 	 * @dataProvider getDataForSubtraction
 	 * @param $minuend
 	 * @param $subtrahend
 	 * @param $difference
 	 */
-
-
 	public function testSubtraction($minuend,
 		$subtrahend, $difference)
 	{
@@ -66,15 +54,12 @@ class RPNCalculatorTest extends TestCase
 		$stack->push($minuend);
 		$stack->push($subtrahend);
 		$sub = new Subtraction($stack);
-
 		//Act
 		$sub_result = $sub->calculateExp();
-
 		//Assert
 		$this->assertEquals($sub_result,
 			$difference);
 	}
-
 	public function getDataForSubtraction()
 	{
 		return [
@@ -85,15 +70,12 @@ class RPNCalculatorTest extends TestCase
 			[-11, -3, -8]
 		];
 	}
-
 	/**
 	 * @dataProvider getDataForMultiplication
 	 * @param $factor1
 	 * @param $factor2
 	 * @param $product
 	 */
-
-
 	public function testMultiplication(
 		$factor1, $factor2, $product)
 	{
@@ -102,15 +84,12 @@ class RPNCalculatorTest extends TestCase
 		$stack->push($factor1);
 		$stack->push($factor2);
 		$mul = new Multiplication($stack);
-
 		//Act
 		$mul_result = $mul->calculateExp();
-
 		//Assert
 		$this->assertEquals($mul_result,
 			$product);
 	}
-
 	public function getDataForMultiplication()
 	{
 		return [
@@ -123,15 +102,12 @@ class RPNCalculatorTest extends TestCase
 			[4, -2, -8]
 		];
 	}
-
 	/**
 	 * @dataProvider getDataForDivision
 	 * @param $factor1
 	 * @param $factor2
 	 * @param $product
 	 */
-
-
 	public function testDivision(
 		$dividend, $divider, $quotient)
 	{
@@ -140,10 +116,8 @@ class RPNCalculatorTest extends TestCase
 		$stack->push($dividend);
 		$stack->push($divider);
 		$div = new Division($stack);
-
 		//Act
 		$div_result = $div->calculateExp();
-
 		//Assert
 		$this->assertEquals($div_result,
 			$quotient);
@@ -152,8 +126,6 @@ class RPNCalculatorTest extends TestCase
     /**
      * @expectedException \Exception
      */
-
-
 	public function testDivisionByZero()
 	{
 		//Arrange
@@ -161,13 +133,10 @@ class RPNCalculatorTest extends TestCase
 		$stack->push(10);
 		$stack->push(0);
 		$div = new Division($stack);
-
 		//Act
 		$div_result = $div->calculateExp();
-
 		
 	}
-
 	public function getDataForDivision()
 	{
 		return [
@@ -180,30 +149,23 @@ class RPNCalculatorTest extends TestCase
 			[4, -2, -2]
 		];
 	}
-
-
 	/**
 	 * @dataProvider getDataForRPN
 	 * @param $expression
 	 * @param $rpn_result
 	 */
-
 	public function testRPN($expression, 
 		$rpn_result)
 	{
 		//Arrange
 		$calculator = new RPNCalculator();
-
 		//Act
 		$calculated_expression = $calculator
 		->calculateExpression($expression);
-
 		//Assert
-
 		$this->assertEquals($rpn_result, 
 			$calculated_expression);
 	}
-
 	public function getDataForRPN()
 	{
 		return [
@@ -212,7 +174,4 @@ class RPNCalculatorTest extends TestCase
 			['2 2 + 3 2 * *', 24]
 		];
 	}
-
 }
-
-
