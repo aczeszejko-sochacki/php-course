@@ -6,7 +6,7 @@ BEGIN;
     account_id int,
     date date,
     date_to date,
-    borrowed boolean DEFAULT FALSE);
+	penalty int DEFAULT 0);
 
 -- create an example set of books:
   INSERT INTO book DEFAULT VALUES;
